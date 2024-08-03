@@ -13,7 +13,7 @@ function ToastShelf() {
   return (
     <div
       className={styles.wrapper}
-      aria-live="assertive"
+      aria-live="polite"
       aria-label="Notification"
       role="region"
     >
