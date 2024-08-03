@@ -6,14 +6,23 @@ import styles from './ToastShelf.module.css';
 function ToastShelf() {
   const { activeToasts } = React.useContext(ToastContext);
 
+  if (!activeToasts) {
+    return null;
+  }
+
   return (
-    <ol className={styles.wrapper}>
+    <div
+      className={styles.wrapper}
+      aria-live="assertive"
+      aria-label="Notification"
+      role="region"
+    >
       {activeToasts.map((activeToast) => (
-        <li key={activeToast.id} className={styles.toastWrapper}>
+        <div key={activeToast.id} className={styles.toastWrapper}>
           <Toast id={activeToast.id} variant={activeToast.variant}>{activeToast.message}</Toast>
-        </li>
+        </div>
       ))}
-    </ol>
+    </div>
   );
 }
 
